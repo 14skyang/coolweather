@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.coolweather.android.db.City;
+import com.coolweather.android.db.County;
 import com.coolweather.android.db.Province;
 import com.coolweather.android.util.HttpUtil;
 import com.coolweather.android.util.Utility;
@@ -24,7 +25,6 @@ import org.litepal.crud.DataSupport;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import okhttp3.Call;
@@ -93,7 +93,7 @@ public class ChooseAreaFragment extends Fragment{
         });
         queryProvinces();
     }
-    //查询选中省内所有的省，优先从数据库查询，如果没有查询到再去服务器查询
+    //查询全国所有的省，优先从数据库查询，如果没有查询到再去服务器查询
     private void queryProvinces(){
         titleText.setText("中国");
         backButton.setVisibility(View.GONE);
@@ -156,7 +156,7 @@ public class ChooseAreaFragment extends Fragment{
         showProgressDialog();
         HttpUtil.sendOkHttpRequest(address, new Callback() {
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(Call call, Response response)throws IOException {
                 String responseText=response.body().string();
                 boolean result=false;
                 if ("province".equals(type)){

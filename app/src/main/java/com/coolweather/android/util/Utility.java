@@ -2,7 +2,7 @@ package com.coolweather.android.util;
 
 import android.text.TextUtils;
 
-import com.coolweather.android.County;
+import com.coolweather.android.db.County;
 import com.coolweather.android.db.City;
 import com.coolweather.android.db.Province;
 
